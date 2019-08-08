@@ -1,0 +1,132 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "UIPath Auth Service",
+    "version" : "1.0.0",
+    "title" : "UIPath Auth Service"
+  },
+  "host" : "uipathscna-bmevch34wq2ty.azurewebsites.net",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/api/account/authenticate" : {
+      "post" : {
+        "tags" : [ "Response" ],
+        "operationId" : "getAccessToken",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "Credentials",
+          "description" : "Parameters",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Credentials"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Token Response",
+            "schema" : {
+              "$ref" : "#/definitions/Token"
+            }
+          }
+        }
+      }
+    },
+    "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs" : {
+      "post" : {
+        "tags" : [ "Response" ],
+        "operationId" : "Start New Job",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "StartInfoBody",
+          "description" : "Parameters",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/StartInfoBody"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Token" : {
+      "type" : "object",
+      "properties" : {
+        "result" : {
+          "type" : "string"
+        },
+        "targetUrl" : {
+          "type" : "string"
+        },
+        "success" : {
+          "type" : "boolean"
+        },
+        "error" : {
+          "type" : "string"
+        },
+        "unAuthorizedRequest" : {
+          "type" : "boolean"
+        },
+        "__abp" : {
+          "type" : "string"
+        }
+      }
+    },
+    "startInfo" : {
+      "type" : "object",
+      "properties" : {
+        "ReleaseKey" : {
+          "type" : "string"
+        },
+        "Strategy" : {
+          "type" : "string"
+        },
+        "RobotIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer"
+          }
+        },
+        "NoOfRobots" : {
+          "type" : "string"
+        },
+        "Source" : {
+          "type" : "string"
+        },
+        "InputArguments" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Credentials" : {
+      "type" : "object",
+      "properties" : {
+        "tenancyName" : {
+          "type" : "string"
+        },
+        "usernameOrEmailAddress" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      }
+    },
+    "StartInfoBody" : {
+      "type" : "object",
+      "properties" : {
+        "startInfo" : {
+          "$ref" : "#/definitions/startInfo"
+        }
+      }
+    }
+  }
+}
