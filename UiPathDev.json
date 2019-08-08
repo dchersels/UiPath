@@ -5,7 +5,7 @@
     "version" : "1.0.0",
     "title" : "UIPath Auth Service"
   },
-  "host" : "uipathscna-bmevch34wq2ty.azurewebsites.net",
+  "host" : "platform.uipath.com",
   "schemes" : [ "https" ],
   "paths" : {
     "/api/account/authenticate" : {
